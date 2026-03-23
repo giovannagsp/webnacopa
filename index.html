@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Web Na Copa</title>
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+:root{
+--verde:#009c3b;
+--amarelo:#ffdf00;
+--azul:#002776;
+}
+
+body{
+background:#f5f7fb;
+color:#333;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:var(--verde);
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#444;
+transition:0.3s;
+}
+
+nav a:hover{
+color:var(--verde);
+}
+
+/* HERO (SÓ IMAGEM AGORA) */
+.hero{
+width:100%;
+overflow:hidden;
+}
+
+.hero-img{
+width:100%;
+height:auto;
+display:block;
+}
+
+/* JOGOS */
+.brasil-jogos{
+padding:100px 8%;
+background:white;
+text-align:center;
+}
+
+.brasil-jogos h2{
+font-size:34px;
+margin-bottom:50px;
+color:var(--azul);
+}
+
+.jogos-box{
+max-width:600px;
+margin:auto;
+}
+
+.jogo{
+display:flex;
+gap:20px;
+background:#f9fafc;
+padding:20px;
+border-radius:10px;
+margin-bottom:5px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.jogo:hover{
+transform:scale(1.03);
+}
+
+.data{
+background:var(--verde);
+color:white;
+padding:10px;
+border-radius:6px;
+min-width:80px;
+text-align:center;
+}
+
+.jogo.ativo{
+background:#eefaf2;
+border-left:5px solid var(--amarelo);
+}
+
+.info-jogo{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+background:#eefaf2;
+padding:0 20px;
+}
+
+.info-jogo.ativo{
+max-height:200px;
+padding:15px;
+}
+
+/* HISTÓRIA */
+.historia{
+padding:150px 8%;
+text-align:center;
+background:linear-gradient(135deg,#002776,#009c3b);
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:25px;
+}
+
+.historia h2{
+font-size:32px;
+max-width:800px;
+}
+
+.btn-historia{
+padding:18px 40px;
+background:var(--amarelo);
+color:var(--azul);
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-size:20px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn-historia:hover{
+transform:scale(1.1);
+}
+
+/* TIMELINE */
+.timeline{
+padding:100px 8%;
+background:#f9fafc;
+}
+
+.timeline-title{
+text-align:center;
+font-size:34px;
+color:var(--azul);
+}
+
+.timeline-line{
+position:relative;
+max-width:900px;
+margin:60px auto;
+height:80px;
+}
+
+.timeline-line::before{
+content:"";
+position:absolute;
+width:100%;
+height:4px;
+background:#ccc;
+top:50%;
+transform:translateY(-50%);
+}
+
+.timeline-progress{
+position:absolute;
+height:4px;
+background:var(--verde);
+top:50%;
+left:0;
+width:0%;
+transform:translateY(-50%);
+transition:0.4s;
+}
+
+/* BOLINHAS */
+.dot{
+position:absolute;
+top:50%;
+transform:translate(-50%,-50%);
+width:22px;
+height:22px;
+background:#bbb;
+border-radius:50%;
+cursor:pointer;
+border:3px solid white;
+transition:0.25s;
+}
+
+.dot:hover{
+background:var(--amarelo);
+transform:translate(-50%,-50%) scale(1.25);
+}
+
+.dot.active{
+background:var(--verde);
+transform:translate(-50%,-50%) scale(1.3);
+}
+
+.dot span{
+position:absolute;
+top:30px;
+left:50%;
+transform:translateX(-50%);
+font-size:14px;
+}
+
+/* TOOLTIP (título ao passar o mouse) */
+.dot::after{
+content:attr(data-title);
+position:absolute;
+bottom:35px;
+left:50%;
+transform:translateX(-50%);
+background:#002776;
+color:white;
+padding:6px 10px;
+border-radius:6px;
+font-size:13px;
+opacity:0;
+pointer-events:none;
+transition:0.25s;
+white-space:nowrap;
+}
+
+.dot:hover::after{
+opacity:1;
+bottom:45px;
+}
+
+/* POSIÇÕES */
+.d1{left:0%;}
+.d2{left:20%;}
+.d3{left:30%;}
+.d4{left:45%;}
+.d5{left:70%;}
+.d6{left:80%;}
+.d7{left:92%;}
+.d8{left:100%;}
+
+.timeline-content{
+max-width:600px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+background:#111;
+color:#aaa;
+text-align:center;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Web Na Copa</div>
+        
+        <nav>
+        <a href="index.html">Home</a>
+        <a href="#">Museu</a>
+        <a href="#">Quiz</a>
+        <a href="#">Sede</a>
+        <a href="#">Brasil</a>
+        </nav>
+        </header>
+
+<!-- BANNER LIMPO -->
+<section class="hero">
+<img src="img/banner.jpg" class="hero-img">
+</section>
+
+<section class="brasil-jogos">
+<h2>Jogos do Brasil</h2>
+
+<div class="jogos-box">
+
+<div class="jogo" onclick="toggleJogo(0)">
+<span class="data">13 Jun</span>
+<p><strong>Brasil x Marrocos</strong><br>19h</p>
+</div>
+<div class="info-jogo" id="info0"><p>Estádio a definir</p></div>
+
+<div class="jogo" onclick="toggleJogo(1)">
+<span class="data">19 Jun</span>
+<p><strong>Brasil x Haiti</strong><br>22h</p>
+</div>
+<div class="info-jogo" id="info1"><p>Estádio a definir</p></div>
+
+<div class="jogo" onclick="toggleJogo(2)">
+<span class="data">24 Jun</span>
+<p><strong>Brasil x Escócia</strong><br>19h</p>
+</div>
+<div class="info-jogo" id="info2"><p>Estádio a definir</p></div>
+
+</div>
+</section>
+
+<section class="historia">
+<h2>Você torce, vibra e comemora… mas conhece o que realmente construiu a Copa do Mundo?</h2>
+<button class="btn-historia">VER HISTÓRIA COMPLETA</button>
+</section>
+
+<section class="timeline">
+
+<h2 class="timeline-title">Linha do Tempo da Copa</h2>
+
+<div class="timeline-line">
+<div class="timeline-progress" id="progress"></div>
+
+<div class="dot d1 active" onclick="mostrar(0)" data-title="O nascimento de um símbolo global"><span>1930</span></div>
+<div class="dot d2" onclick="mostrar(1)" data-title="O trauma do Maracanazo"><span>1950</span></div>
+<div class="dot d3" onclick="mostrar(2)" data-title=" O surgimento de Pelé"><span>1958</span></div>
+<div class="dot d4" onclick="mostrar(3)" data-title="O auge do futebol arte"><span>1970</span></div>
+<div class="dot d5" onclick="mostrar(4)" data-title="Eficiência e frieza decisiva"><span>1994</span></div>
+<div class="dot d6" onclick="mostrar(5)" data-title="Penta"><span>2002</span></div>
+<div class="dot d7" onclick="mostrar(6)" data-title="Mineiraço"><span>2014</span></div>
+<div class="dot d8" onclick="mostrar(7)" data-title="Hoje"><span>Hoje</span></div>
+
+</div>
+
+<div class="timeline-content" id="conteudo">
+<p><h3>1930 - Primeira Copa do Mundo</h3><p>A primeira Copa, realizada no Uruguai, ocorreu em um período entre guerras, quando países buscavam fortalecer sua identidade nacional. Ao sediar e vencer o torneio, o Uruguai utilizou ofutebol como ferramenta de projeção internacional, mostrando que o esporte já ultrapassava o campo e ganhava dimensão política e cultural.</p></p>
+</div>
+
+</section>
+
+<footer>
+<p>Web Na Copa - Feito por DevsConecta</p>
+</footer>
+
+<script>
+
+let textos = [
+"<h3>1930 - Primeira Copa do Mundo</h3><p>A primeira Copa, realizada no Uruguai, ocorreu em um período entre guerras, quando países buscavam fortalecer sua identidade nacional. Ao sediar e vencer o torneio, o Uruguai utilizou ofutebol como ferramenta de projeção internacional, mostrando que o esporte já ultrapassava o campo e ganhava dimensão política e cultural.</p>",
+
+"<h3>1950 - Maracanazo</h3><p>Maracanazo foi a surpreendente derrota do Brasil para o Uruguai na final da Copa do Mundo FIFA de 1950, no estádio Maracanã. Diante de mais de 170 mil torcedores, o Brasil precisava apenas de um empate, mas perdeu por 2 a 1, com gol decisivo de Alcides Ghiggia, causando um dos maiores choques da história do futebol e marcando profundamente a memória esportiva do país.</p>",
+
+"<h3>1958 - O Surgimento de Pelé</h3><p>O surgimento de Pelé aconteceu no final dos anos 1950, quando o jovem talento do Santos Futebol Clube ganhou destaque mundial na Copa do Mundo FIFA de 1958. Com apenas 17 anos, ele marcou gols decisivos, incluindo dois na final contra a Suécia, ajudando o Brasil a conquistar seu primeiro título mundial e se tornando um símbolo precoce de genialidade no futebol.</p>",
+
+"<h3>1970 - O Auge do Futebol Arte</h3><p>O auge do “futebol arte” ocorreu na Copa do Mundo FIFA de 1970, quando a Seleção Brasileira encantou o mundo com um estilo criativo, técnico e coletivo, liderado por Pelé e craques como Jairzinho e Rivelino. O Brasil conquistou o tricampeonato ao vencer a Itália por 4 a 1 na final, com atuações marcantes e gols históricos, como o de Carlos Alberto Torres, consolidando aquela equipe como uma das maiores de todos os tempos.</p>",
+
+"<h3>1994 - Tetracampeão</h3><p>O tetracampeonato do Brasil veio na Copa do Mundo FIFA de 1994, quando a Seleção Brasileira encerrou um jejum de 24 anos ao vencer a Itália nos pênaltis após empate sem gols na final. Liderado por Romário e com destaque para Bebeto e o goleiro Cláudio Taffarel, o time se destacou pela eficiência e solidez defensiva, marcando uma nova fase mais pragmática do futebol brasileiro.</p>",
+
+"<h3>2002 - Penta</h3><p>O pentacampeonato do Brasil veio na Copa do Mundo FIFA de 2002, quando a Seleção Brasileira conquistou seu quinto título ao vencer a Alemanha por 2 a 0 na final. Liderado por Ronaldo Nazário, artilheiro do torneio com oito gols, e com atuações decisivas de Rivaldo e Ronaldinho Gaúcho, o time combinou talento e eficiência, consolidando o Brasil como a maior potência da história das Copas do Mundo.</p>",
+
+"<h3>2014 - Mineiraço</h3><p>O Mineiraço foi a histórica derrota da Seleção Brasileira por 7 a 1 para a Alemanha na semifinal da Copa do Mundo FIFA de 2014, no Mineirão. Em um dos jogos mais chocantes da história do futebol, o Brasil sofreu cinco gols ainda no primeiro tempo, resultando em uma derrota marcante que abalou o país e entrou para a memória como um dos maiores traumas esportivos nacionais.</p>",
+
+"<h3>Hoje</h3><p>Hoje em dia, a Seleção Brasileira vive um processo de renovação, apostando em uma nova geração de talentos como Vinícius Júnior e Rodrygo. Mesmo sem conquistar uma Copa do Mundo desde 2002, o Brasil segue como uma das seleções mais fortes do mundo, tentando recuperar seu protagonismo com um futebol mais moderno, veloz e coletivo.</p>"
+];
+
+function mostrar(index){
+
+document.getElementById("conteudo").innerHTML = "<p>"+textos[index]+"</p>";
+
+let dots = document.querySelectorAll(".dot");
+dots.forEach(d=>d.classList.remove("active"));
+dots[index].classList.add("active");
+
+let pos=["0%","20%","30%","45%","70%","80%","92%","100%"];
+document.getElementById("progress").style.width = pos[index];
+
+}
+
+function toggleJogo(index){
+
+let jogos=document.querySelectorAll(".jogo");
+let infos=document.querySelectorAll(".info-jogo");
+
+let ativo=jogos[index].classList.contains("ativo");
+
+jogos.forEach(j=>j.classList.remove("ativo"));
+infos.forEach(i=>i.classList.remove("ativo"));
+
+if(!ativo){
+jogos[index].classList.add("ativo");
+infos[index].classList.add("ativo");
+}
+
+}
+
+</script>
+
+</body>
+</html>
