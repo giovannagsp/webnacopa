@@ -66,7 +66,6 @@ overflow:hidden;
 
 .hero-img{
 width:100%;
-height:auto;
 display:block;
 }
 
@@ -118,7 +117,6 @@ background:#eefaf2;
 border-left:5px solid var(--amarelo);
 }
 
-/* NOVO: alinhamento perfeito */
 .conteudo-jogo{
 display:flex;
 justify-content:space-between;
@@ -191,7 +189,89 @@ font-size:34px;
 color:var(--azul);
 }
 
-/* resto igual... */
+.timeline-line{
+position:relative;
+max-width:900px;
+margin:60px auto;
+height:80px;
+}
+
+.timeline-line::before{
+content:"";
+position:absolute;
+width:100%;
+height:4px;
+background:#ccc;
+top:50%;
+transform:translateY(-50%);
+}
+
+.timeline-progress{
+position:absolute;
+height:4px;
+background:var(--verde);
+top:50%;
+left:0;
+width:0%;
+transform:translateY(-50%);
+transition:0.4s;
+}
+
+.dot{
+position:absolute;
+top:50%;
+transform:translate(-50%,-50%);
+width:22px;
+height:22px;
+background:#bbb;
+border-radius:50%;
+cursor:pointer;
+border:3px solid white;
+transition:0.25s;
+}
+
+.dot:hover{
+background:var(--amarelo);
+transform:translate(-50%,-50%) scale(1.25);
+}
+
+.dot.active{
+background:var(--verde);
+transform:translate(-50%,-50%) scale(1.3);
+}
+
+.dot span{
+position:absolute;
+top:30px;
+left:50%;
+transform:translateX(-50%);
+font-size:14px;
+}
+
+.d1{left:0%;}
+.d2{left:20%;}
+.d3{left:30%;}
+.d4{left:45%;}
+.d5{left:70%;}
+.d6{left:80%;}
+.d7{left:92%;}
+.d8{left:100%;}
+
+.timeline-content{
+max-width:600px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+background:#111;
+color:#aaa;
+text-align:center;
+padding:20px;
+}
 
 </style>
 
@@ -229,9 +309,7 @@ color:var(--azul);
 </div>
 
 </div>
-<div class="info-jogo" id="info0"><p>Estádio MetLife, East Rutherford.</p>
-<p>Informações adicionais estarão disponíveis antes da partida.</p>
-</div>
+<div class="info-jogo" id="info0"><p>Estádio MetLife</p></div>
 
 <div class="jogo" onclick="toggleJogo(1)">
 <span class="data">19 Jun</span>
@@ -242,9 +320,7 @@ color:var(--azul);
 </div>
 
 </div>
-<div class="info-jogo" id="info1"><p>Estádio Lincoln Financial Field, Filadélfia.</p>
-<p>Informações adicionais estarão disponíveis antes da partida.</p>
-</div>
+<div class="info-jogo" id="info1"><p>Estádio Lincoln</p></div>
 
 <div class="jogo" onclick="toggleJogo(2)">
 <span class="data">24 Jun</span>
@@ -255,14 +331,86 @@ color:var(--azul);
 </div>
 
 </div>
-<div class="info-jogo" id="info2"><p>Estádio Hard Rock, Miami.</p>
-<p>Informações adicionais estarão disponíveis antes da partida.</p>
-</div>
+<div class="info-jogo" id="info2"><p>Estádio Hard Rock</p></div>
 
 </div>
 </section>
 
+<section class="historia">
+<h2>Você torce, vibra e comemora… mas conhece o que realmente construiu a Copa do Mundo?</h2>
+<button class="btn-historia">VER HISTÓRIA COMPLETA</button>
+</section>
+
+<section class="timeline">
+
+<h2 class="timeline-title">Linha do Tempo da Copa</h2>
+
+<div class="timeline-line">
+<div class="timeline-progress" id="progress"></div>
+
+<div class="dot d1 active" onclick="mostrar(0)"><span>1930</span></div>
+<div class="dot d2" onclick="mostrar(1)"><span>1950</span></div>
+<div class="dot d3" onclick="mostrar(2)"><span>1958</span></div>
+<div class="dot d4" onclick="mostrar(3)"><span>1970</span></div>
+<div class="dot d5" onclick="mostrar(4)"><span>1994</span></div>
+<div class="dot d6" onclick="mostrar(5)"><span>2002</span></div>
+<div class="dot d7" onclick="mostrar(6)"><span>2014</span></div>
+<div class="dot d8" onclick="mostrar(7)"><span>Hoje</span></div>
+
+</div>
+
+<div class="timeline-content" id="conteudo"></div>
+
+</section>
+
+<footer>
+<p>Web Na Copa - Feito por você 🚀</p>
+</footer>
+
 <script>
+
+let textos = [ 
+
+`<h3>1930 - O começo de tudo</h3>
+<p>A primeira Copa do Mundo foi realizada no Uruguai, marcando o início de uma das maiores competições esportivas do planeta. O torneio ainda era pequeno, com poucos países participantes, mas já carregava um enorme simbolismo.</p>
+
+<p>O futebol começava ali sua jornada rumo à paixão global que conhecemos hoje.</p>`,
+
+`<h3>1950 - O Maracanazo</h3>
+<p>O Brasil sediou a Copa com um sonho gigante, mas acabou sofrendo uma das derrotas mais marcantes da história contra o Uruguai, no Maracanã lotado.</p>
+
+<p>Esse momento ficou eternizado como um dos episódios mais emocionantes e dolorosos do futebol mundial.</p>`,
+
+`<h3>1958 - O surgimento de Pelé</h3>
+<p>Na Suécia, o mundo viu nascer uma lenda: Pelé. Com apenas 17 anos, ele encantou o planeta e ajudou o Brasil a conquistar sua primeira Copa do Mundo.</p>`,
+
+`<h3>1970 - O auge do futebol arte</h3>
+<p>Com um time histórico, o Brasil conquistou o tricampeonato no México, jogando um futebol considerado por muitos o mais bonito de todos os tempos.</p>`,
+
+`<h3>1994 - O Tetra</h3>
+<p>Após 24 anos de espera, o Brasil voltou ao topo do mundo nos Estados Unidos, vencendo a Itália nos pênaltis.</p>`,
+
+`<h3>2002 - O Penta</h3>
+<p>Com Ronaldo brilhando, o Brasil conquistou seu quinto título mundial, consolidando-se como a maior seleção da história.</p>`,
+
+`<h3>2014 - O Mineiraço</h3>
+<p>Em casa, o Brasil viveu uma das derrotas mais chocantes do futebol ao perder por 7 a 1 para a Alemanha.</p>`,
+
+`<h3>Hoje</h3>
+<p>A Copa do Mundo continua sendo o maior espetáculo do futebol, reunindo nações, histórias e emoções a cada quatro anos.</p>`
+
+];
+
+function mostrar(index){
+document.getElementById("conteudo").innerHTML = textos[index];
+
+let dots = document.querySelectorAll(".dot");
+dots.forEach(d=>d.classList.remove("active"));
+dots[index].classList.add("active");
+
+let pos=["0%","20%","30%","45%","70%","80%","92%","100%"];
+document.getElementById("progress").style.width = pos[index];
+}
 
 function toggleJogo(index){
 
@@ -279,6 +427,11 @@ jogos[index].classList.add("ativo");
 infos[index].classList.add("ativo");
 }
 
+}
+
+/* 🔥 AQUI ESTÁ A MÁGICA */
+window.onload = function(){
+mostrar(0);
 }
 
 </script>
