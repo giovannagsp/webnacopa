@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bastidores | Web Na Copa</title>
+<title>Web Na Copa</title>
 
 <style>
 
@@ -59,156 +59,99 @@ color:var(--verde);
 }
 
 /* HERO */
-.hero{
-height:320px;
-background:url('img/bastidores.jpg') center/cover no-repeat;
-display:flex;
-align-items:center;
-padding:0 8%;
-color:white;
-position:relative;
-}
-
-.hero::after{
-content:"";
-position:absolute;
+.hero img{
 width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-top:0;
-left:0;
+display:block;
 }
 
-.hero h1{
-position:relative;
-z-index:2;
-font-size:42px;
-}
-
-.hero p{
-position:relative;
-z-index:2;
-margin-top:10px;
-max-width:500px;
-}
-
-/* SECTIONS */
-section{
+/* GALERIA */
+.bastidores{
 padding:100px 8%;
-}
-
-/* GRID CARDS */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
-gap:25px;
-}
-
-.card{
 background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 5px 20px rgba(0,0,0,0.08);
-cursor:pointer;
-transition:0.3s;
-opacity:0;
-transform:translateY(30px);
-}
-
-.card.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.card:hover{
-transform:translateY(-10px) scale(1.03);
-}
-
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
-
-.card-content{
-padding:20px;
-}
-
-.card h3{
-color:var(--verde);
-margin-bottom:10px;
-}
-
-.extra{
-max-height:0;
-overflow:hidden;
-transition:0.4s;
-background:#f1f5f9;
-padding:0 20px;
-}
-
-.extra.ativo{
-max-height:200px;
-padding:15px;
-}
-
-/* STORY */
-.story{
-background:linear-gradient(135deg,#002776,#000);
-color:white;
 text-align:center;
 }
 
-.story h2{
-font-size:34px;
-margin-bottom:20px;
-}
-
-/* TIMELINE BASTIDORES */
-.timeline{
-background:#fff;
-}
-
-.timeline h2{
-text-align:center;
+.bastidores h2{
 font-size:34px;
 color:var(--azul);
 margin-bottom:50px;
 }
 
-.timeline-item{
-max-width:700px;
-margin:20px auto;
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+/* CARD */
+.card{
+position:relative;
+overflow:hidden;
+border-radius:12px;
+height:300px;
+cursor:pointer;
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:0.5s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+/* OVERLAY (ABA) */
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.8);
+color:white;
 padding:20px;
-border-left:4px solid var(--verde);
-background:#f9fafc;
-border-radius:8px;
-opacity:0;
-transform:translateX(-30px);
+
+transform:translateY(100%);
 transition:0.4s;
 }
 
-.timeline-item.show{
-opacity:1;
-transform:translateX(0);
+.card:hover .overlay{
+transform:translateY(0);
 }
 
-/* GALERIA */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-gap:15px;
+.card:hover .overlay{
+transform:translateY(0);
 }
 
-.gallery img{
-width:100%;
-height:200px;
-object-fit:cover;
-border-radius:10px;
+.overlay h3{
+margin-bottom:8px;
+}
+
+.overlay p{
+font-size:14px;
+line-height:1.4;
+}
+
+/* BOTÃO */
+.btn-museu{
+background:var(--amarelo);
+color:var(--azul);
+border:none;
+padding:8px 14px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
 transition:0.3s;
+text-decoration:none;
+display:inline-block;
+margin-top:12px;
+align-self:flex-start;
 }
 
-.gallery img:hover{
+.btn-museu:hover{
 transform:scale(1.1);
 }
 
@@ -218,6 +161,7 @@ background:#111;
 color:#aaa;
 text-align:center;
 padding:20px;
+margin-top:50px;
 }
 
 </style>
@@ -228,9 +172,10 @@ padding:20px;
 
 <header>
 <div class="logo">Web Na Copa</div>
+
 <nav>
 <a href="index.html">Home</a>
-<a href="#">Museu</a>
+<a href="museu.html">Museu</a>
 <a href="#">Quiz</a>
 <a href="#">Sede</a>
 <a href="#">Brasil</a>
@@ -238,109 +183,67 @@ padding:20px;
 </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-<div>
-<h1>Os Bastidores da Copa</h1>
-<p>Antes do apito inicial, existe um mundo invisível onde decisões, emoções e pressões definem o destino de uma seleção.</p>
-</div>
+<img src="img/estadio.jpg">
 </section>
 
-<!-- CARDS -->
-<section>
-<h2 style="text-align:center; margin-bottom:50px; color:var(--azul);">Momentos Invisíveis</h2>
+<section class="bastidores">
+<h2>Galeria de Bastidores</h2>
 
-<div class="grid">
+<div class="galeria">
 
-<div class="card" onclick="toggle(0)">
-<img src="img/vestiario.jpg">
-<div class="card-content">
-<h3>Vestiário</h3>
-<p>Onde tudo começa.</p>
-</div>
-<div class="extra" id="extra0">
-<p>Discursos, tensão e decisões finais antes de entrar em campo.</p>
+<div class="card">
+<img src="img/pelé1958.jpg">
+<div class="overlay">
+<h3>Pelé - 1958</h3>
+<p>O nascimento de um rei. Com 17 anos, encantou o mundo.</p>
+<a href="museu.html" class="btn-museu">Ver Museu</a>
 </div>
 </div>
 
-<div class="card" onclick="toggle(1)">
-<img src="img/treino.jpg">
-<div class="card-content">
-<h3>Treinos</h3>
-<p>Preparação silenciosa.</p>
-</div>
-<div class="extra" id="extra1">
-<p>Treinos moldam o jogo real.</p>
+<div class="card">
+<img src="img/1970.jpg">
+<div class="overlay">
+<h3>Brasil - 1970</h3>
+<p>A maior seleção da história. Futebol arte em estado puro.</p>
+<a href="museu.html" class="btn-museu">Ver Museu</a>
 </div>
 </div>
 
-<div class="card" onclick="toggle(2)">
-<img src="img/pressao.jpg">
-<div class="card-content">
-<h3>Pressão</h3>
-<p>O peso do país.</p>
-</div>
-<div class="extra" id="extra2">
-<p>Milhões de expectativas em um só momento.</p>
+<div class="card">
+<img src="img/zico.jpg">
+<div class="overlay">
+<h3>Zico - 1982</h3>
+<p>Um time inesquecível, mesmo sem o título.</p>
+<a href="museu.html" class="btn-museu">Ver Museu</a>
 </div>
 </div>
 
+<div class="card">
+<img src="img/1994.jpg">
+<div class="overlay">
+<h3>Romário - 1994</h3>
+<p>Eficiência e talento trouxeram o tetra.</p>
+<a href="museu.html" class="btn-museu">Ver Museu</a>
 </div>
-</section>
+</div>
 
-<!-- STORY -->
-<section class="story">
-<h2>Nem tudo que faz história aparece na TV</h2>
-<p>Por trás de cada gol, existe esforço, tensão, estratégia e emoção que o público raramente vê. A Copa é muito mais do que 90 minutos.</p>
-</section>
+<div class="card">
+<img src="img/2002.jpg">
+<div class="overlay">
+<h3>Ronaldo - 2002</h3>
+<p>O Fenômeno encerra o ciclo com o penta.</p>
+<a href="museu.html" class="btn-museu">Ver Museu</a>
+</div>
+</div>
 
-<!-- TIMELINE -->
-<section class="timeline">
-<h2>Bastidores Marcantes</h2>
-
-<div class="timeline-item">1998 — Ronaldo passa mal antes da final.</div>
-<div class="timeline-item">2002 — Recuperação histórica de Ronaldo.</div>
-<div class="timeline-item">2014 — Abalo emocional antes do 7x1.</div>
-
-</section>
-
-<!-- GALERIA -->
-<section>
-<h2 style="text-align:center; margin-bottom:40px;">Galeria dos Bastidores</h2>
-
-<div class="gallery">
-<img src="img/b1.jpg">
-<img src="img/b2.jpg">
-<img src="img/b3.jpg">
-<img src="img/b4.jpg">
 </div>
 
 </section>
 
 <footer>
-<p>Web Na Copa - Bastidores</p>
+<p>Web Na Copa</p>
 </footer>
-
-<script>
-
-/* EXPANDIR CARDS */
-function toggle(index){
-let extras=document.querySelectorAll(".extra");
-extras.forEach(e=>e.classList.remove("ativo"));
-extras[index].classList.add("ativo");
-}
-
-/* ANIMAÇÃO AO ROLAR */
-window.addEventListener("scroll", ()=>{
-document.querySelectorAll(".card, .timeline-item").forEach(el=>{
-let top=el.getBoundingClientRect().top;
-if(top < window.innerHeight - 50){
-el.classList.add("show");
-}
-});
-});
-
-</script>
 
 </body>
 </html>
