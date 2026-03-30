@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>História da Copa</title>
+
+<link rel="icon" type="image/png" href="img/taça.png">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+:root{
+--verde:#009c3b;
+--amarelo:#ffdf00;
+--azul:#002776;
+--cinza:#f5f7fb;
+}
+
+body{
+background:var(--cinza);
+color:#333;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:var(--verde);
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#444;
+transition:0.3s;
+}
+
+nav a:hover{
+color:var(--verde);
+}
+
+/* HERO */
+.hero{
+width:100%;
+height:340px;
+background:url('img/copa-banner.jpg') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+}
+
+.hero h1{
+position:relative;
+color:white;
+font-size:42px;
+z-index:1;
+}
+
+/* CONTAINER */
+.container{
+max-width:1100px;
+margin:80px auto;
+padding:0 20px;
+}
+
+/* BLOCOS */
+.bloco{
+display:flex;
+align-items:center;
+gap:40px;
+margin-bottom:80px;
+}
+
+.bloco.reverse{
+flex-direction:row-reverse;
+}
+
+.texto{
+flex:1;
+line-height:1.8;
+font-size:16px;
+}
+
+.imagem{
+flex:1;
+}
+
+.imagem img{
+width:100%;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.legenda{
+font-size:14px;
+margin-top:8px;
+color:#666;
+text-align:center;
+}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+.bloco{
+flex-direction:column;
+}
+.bloco.reverse{
+flex-direction:column;
+}
+}
+
+/* FOOTER */
+footer{
+background:#111;
+color:#aaa;
+text-align:center;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div class="logo">Web Na Copa</div>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="#">Museu</a>
+    <a href="#">Quiz</a>
+    <a href="#">Sede</a>
+    <a href="#">Brasil</a>
+    <a href="bastidores.html">Bastidores</a>
+    </nav>
+</nav>
+</header>
+
+<section class="hero">
+<h1>A História da Copa do Mundo</h1>
+</section>
+
+<div class="container">
+
+<div class="bloco">
+<div class="texto">
+<p>
+A Copa do Mundo da FIFA transcende a definição de um simples torneio esportivo. Trata-se de um fenômeno global no qual nações projetam suas identidades, narrativas e emoções por meio do futebol. Desde sua criação, em 1930, a competição acompanha as transformações históricas do mundo, dialogando com contextos políticos, avanços tecnológicos e mudanças sociais.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/uruguai1930.jpg">
+<p class="legenda">Primeira Copa do Mundo realizada no Uruguai, em 1930</p>
+</div>
+</div>
+
+<div class="bloco reverse">
+<div class="texto">
+<p>
+Em 1950, o Brasil sediou o torneio em meio a um projeto de afirmação nacional. A construção do Maracanã simbolizava modernidade e grandeza. No entanto, a derrota para o Uruguai na final transformou celebração em frustração coletiva, em um episódio que ultrapassou o campo esportivo e se consolidou como um dos momentos mais marcantes da memória nacional.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/maracanazo.jpg">
+<p class="legenda">O “Maracanazo” como marco histórico e emocional</p>
+</div>
+</div>
+
+<div class="bloco">
+<div class="texto">
+<p>
+A conquista de 1958, na Suécia, representou um ponto de inflexão. O surgimento de Pelé, então com 17 anos, redefiniu os padrões de excelência no futebol e projetou o Brasil internacionalmente como referência técnica e criativa no esporte.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/pele.jpg">
+<p class="legenda">Pelé e a consolidação do talento brasileiro</p>
+</div>
+</div>
+
+<div class="bloco reverse">
+<div class="texto">
+<p>
+Em 1970, no México, a Copa alcançou um novo patamar ao ser transmitida em cores para todo o mundo. A seleção brasileira daquela edição é frequentemente apontada como uma das mais completas da história, simbolizando a integração entre desempenho esportivo e expressão estética.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/brasil1970.jpg">
+<p class="legenda">A seleção de 1970 e o auge do futebol-arte</p>
+</div>
+</div>
+
+<div class="bloco">
+<div class="texto">
+<p>
+A edição de 1986, novamente no México, ficou marcada pela atuação singular de Diego Maradona. Sua performance sintetizou a complexidade do futebol: ao mesmo tempo genial e controverso, elevando a Argentina ao título mundial.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/maradona.jpg">
+<p class="legenda">Maradona como símbolo de genialidade e controvérsia</p>
+</div>
+</div>
+
+<div class="bloco reverse">
+<div class="texto">
+<p>
+Em 1994, nos Estados Unidos, observou-se uma evolução tática significativa. O Brasil conquistou o tetracampeonato com um estilo mais pragmático, evidenciando a crescente importância da estratégia e da disciplina no futebol moderno.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/brasil94.jpg">
+<p class="legenda">O título de 1994 e a consolidação do futebol estratégico</p>
+</div>
+</div>
+
+<div class="bloco">
+<div class="texto">
+<p>
+Em 2002, a Copa evidenciou a globalização do esporte. Ronaldo Nazário protagonizou uma trajetória de superação ao retornar de lesões graves para se tornar artilheiro do torneio e conduzir o Brasil ao pentacampeonato.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/ronaldo2002.jpg">
+<p class="legenda">Ronaldo e a narrativa de superação no esporte</p>
+</div>
+</div>
+
+<div class="bloco reverse">
+<div class="texto">
+<p>
+A edição de 2014, realizada no Brasil, ocorreu em meio a tensões sociais. Dentro de campo, a derrota por 7 a 1 para a Alemanha gerou forte impacto simbólico, sendo interpretada como um dos episódios mais significativos da história recente do futebol.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/brasil2014.jpg">
+<p class="legenda">O 7x1 e seu impacto simbólico global</p>
+</div>
+</div>
+
+<div class="bloco">
+<div class="texto">
+<p>
+Em 2022, no Catar, a conquista da Argentina marcou a consagração de Lionel Messi. O título representou o encerramento de uma trajetória histórica, consolidando o jogador entre os maiores de todos os tempos.
+</p>
+</div>
+
+<div class="imagem">
+<img src="img/messi2022.jpg">
+<p class="legenda">Messi e a consagração definitiva no cenário mundial</p>
+</div>
+</div>
+
+</div>
+
+<footer>
+<p>Web Na Copa - Feito por DevsConecta</p>
+</footer>
+
+</body>
+</html>
