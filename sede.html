@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/taça.png">
+    <title>Web Na Copa - 2026</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        padding-top: 56px;
+      }
+      .carousel-item {
+        height: 700px;
+      }
+      .carousel-item svg {
+        height: 100%;
+      }
+
+      img {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+      }
+      img:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      }
+
+      .accordion-item {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+      .accordion-button {
+        background-color: #fff;
+        font-weight: 500;
+      }
+      .accordion-button:not(.collapsed) {
+        background-color: #f8f9fa;
+      }
+
+      .qr-section {
+        max-width: 1000px;
+        margin: 20px auto;
+        text-align: left;
+      }
+
+      /* NAV IGUAL AO OUTRO SITE */
+.navbar{
+background:white !important;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.navbar-brand{
+color:#009c3b !important;
+font-weight:bold;
+}
+
+.navbar-nav .nav-link{
+margin-left:25px;
+text-decoration:none;
+color:#444 !important;
+transition:0.3s;
+}
+
+.navbar-nav .nav-link:hover{
+color:#009c3b !important;
+}
+
+.navbar-nav .nav-link.active{
+color:#009c3b !important;
+}
+
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md fixed-top"> 
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Web Na Copa - 2026</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Início</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="museu.html">Museu</a></li>
+            <li class="nav-item"><a class="nav-link" href="quiz.html">Quiz</a></li>
+            <li class="nav-item"><a class="nav-link" href="sede.html">Sede</a></li>
+            <li class="nav-item"><a class="nav-link" href="brasil.html">Brasil</a></li>
+            <li class="nav-item"><a class="nav-link" href="bastidores.html">Bastidores</a></li>
+          </ul> 
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/1.png" class="d-block w-100" />
+            <div class="carousel-caption text-start">
+              <h1>Bem-vindo</h1>
+              <p>Sedes da Copa do Mundo</p>
+            </div>
+          </div>
+  
+          <div class="carousel-item">
+            <img src="img/2.png" class="d-block w-100" />
+            <div class="carousel-caption">
+              <h1>Novidades chegando</h1>
+            </div>
+          </div>
+  
+          <div class="carousel-item">
+            <img src="img/3.png" class="d-block w-100" />
+            <div class="carousel-caption">
+              <h1>Prepare-se para 2026</h1>
+            </div>
+          </div>
+        </div>
+  
+      <div class="container mt-5 text-center">
+        <!-- Nova Jersey -->
+        <div class="mb-5 border-bottom pb-5">
+          <h1 class="display-3">Nova Jersey</h1>
+          <div class="d-flex justify-content-center gap-3 flex-wrap mb-3">
+            <img
+              src="img/nova.webp"
+              style="width: 500px; height: 500px; object-fit: cover"
+            />
+            <img
+              src="img/nova.jpg"
+              style="width: 500px; height: 500px; object-fit: cover"
+            />
+          </div>
+
+          <div class="accordion mx-auto" id="acc1" style="max-width: 1000px">
+            <div class="accordion-item">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#b1c1"
+              >
+                Um Pouco Sobre a Cidade
+              </button>
+              <div
+                id="b1c1"
+                class="accordion-collapse collapse"
+                data-bs-parent="#acc1"
+              >
+                <div class="accordion-body">
+                  <h4>
+                    A região de Nova Jersey, integrada à área metropolitana de
+                    Nova York, apresenta uma das maiores diversidades culturais
+                    dos Estados Unidos. A presença de comunidades de diferentes
+                    origens — latino-americanas, asiáticas, europeias e
+                    africanas — contribui para um ambiente multicultural,
+                    refletido na gastronomia, na música e nos eventos locais.
+                  </h3>
+
+                  <h4>
+                    Durante grandes eventos internacionais, como a Copa do
+                    Mundo, essa diversidade se intensifica, transformando a
+                    região em um ponto de encontro global. Festivais de rua,
+                    encontros de torcedores e manifestações culturais
+                    espontâneas costumam ocupar espaços públicos, criando uma
+                    atmosfera que mistura diferentes tradições em torno do
+                    futebol.
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="qr-section d-flex align-items-center gap-3">
+            <h4 class="mb-0">Saiba Mais</h4>
+            <button
+              class="btn btn-outline-dark shadow-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#qrModalNJ"
+            >
+              <i class="bi bi-qr-code-scan"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filadélfia -->
+        <div class="mb-5 border-bottom pb-5">
+          <h1 class="display-3">Filadélfia</h1>
+          <div class="d-flex justify-content-center gap-3 flex-wrap mb-3">
+            <img
+              src="img/fila2.jpg"
+              style="width: 500px; height: 500px; object-fit: cover"
+            />
+            <img
+              src="img/fila3.jpg"
+              style="width: 500px; height: 500px; object-fit: cover"
+            />
+          </div>
+
+          <div class="accordion mx-auto" id="acc2" style="max-width: 1000px">
+            <div class="accordion-item">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#b2c1"
+              >
+                Um Pouco Sobre a Cidade
+              </button>
+              <div
+                id="b2c1"
+                class="accordion-collapse collapse"
+                data-bs-parent="#acc2"
+              >
+                <div class="accordion-body">
+                  <h4>
+                    A Filadélfia possui uma identidade cultural fortemente
+                    ligada à história dos Estados Unidos. A cidade preserva
+                    construções, museus e símbolos que remetem ao período da
+                    independência, o que contribui para um ambiente cultural
+                    rico e educativo.
+                  </h4>
+
+                  <h4>
+                    Além disso, a cidade apresenta uma cena artística
+                    diversificada, com destaque para murais urbanos, música e
+                    gastronomia típica. Entre os elementos culturais mais
+                    conhecidos está o “Philly Cheesesteak”, prato tradicional
+                    que se tornou símbolo local. Durante a Copa, essa combinação
+                    entre tradição histórica e cultura contemporânea tende a
+                    enriquecer a experiência dos visitantes.
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="qr-section d-flex align-items-center gap-3">
+            <h4 class="mb-0">Saiba Mais</h4>
+            <button
+              class="btn btn-outline-dark shadow-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#qrModalPH"
+            >
+              <i class="bi bi-qr-code-scan"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Miami -->
+        <div class="mb-5">
+          <h1 class="display-3">Miami</h1>
+          <div class="d-flex justify-content-center gap-3 flex-wrap mb-3">
+            <img
+              src="img/mia.webp"
+              style="width: 500px; height: 500px; object-fit: cover"
+            />
+            <img
+              src="img/miami.avif"
+              style="width: 500px; height: 500px; object-fit: cover"
+            />
+          </div>
+
+          <div class="accordion mx-auto" id="acc3" style="max-width: 1000px">
+            <div class="accordion-item">
+              <button
+                class="accordion-button collapsed"
+                data-bs-toggle="collapse"
+                data-bs-target="#b3c1"
+              >
+                Um Pouco Sobre a Cidade
+              </button>
+              <div
+                id="b3c1"
+                class="accordion-collapse collapse"
+                data-bs-parent="#acc3"
+              >
+                <div class="accordion-body">
+                  <h4>
+                    Miami é marcada por uma forte influência latino-americana e
+                    caribenha, o que define grande parte de sua identidade
+                    cultural. A cidade é conhecida por seus ritmos musicais,
+                    como salsa, reggaeton e música eletrônica, além de festivais
+                    e eventos ao ar livre que acontecem ao longo do ano.
+                  </h4>
+
+                  <h4>
+                    A gastronomia local também reflete essa diversidade, com
+                    pratos típicos de países como Cuba e outros da América
+                    Latina. Durante a Copa do Mundo, essa característica
+                    cultural torna Miami um dos ambientes mais festivos entre as
+                    sedes, com grande participação popular, celebrações nas ruas
+                    e uma atmosfera vibrante que conecta o futebol à música, à
+                    dança e à convivência social.
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="qr-section d-flex align-items-center gap-3">
+            <h4 class="mb-0">Saiba Mais</h4>
+            <button
+              class="btn btn-outline-dark shadow-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#qrModalMI"
+            >
+              <i class="bi bi-qr-code-scan"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="container mt-5 text-center">
+        <hr />
+        <p>&copy; Web Na Copa</p>
+      </footer>
+    </main>
+
+    <!-- MODAIS -->
+    <div class="modal fade" id="qrModalNJ">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Nova Jersey</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center">
+            <img
+              src="img/nova.png"  style="width: 450px; height: 500px; object-fit: cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="qrModalPH">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Filadélfia</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center">
+            <img
+              src="img/fila.png"  style="width: 450px; height: 500px; object-fit: cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="qrModalMI">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>Miami</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body text-center">
+            <img
+              src="img/mi.png"  style="width: 450px; height: 500px; object-fit: cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var myCarousel = document.querySelector("#myCarousel");
+      var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 2000,
+        ride: "carousel",
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+```

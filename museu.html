@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Museu | Web Na Copa</title>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Museu da Copa do Mundo</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: aliceblue;
+      color: white;
+    }
+
+    /* HEADER */
+    header {
+  background:url('img/carrossel1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+}
+
+    header h1 {
+      font-size: 3em;
+      text-align: center;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+
+
+    nav a {
+      color: black;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover{
+color:var(--verde);
+}
+
+    nav a:hover {
+      color: darkgreen; 
+     
+    }
+
+    /* SEÇÕES */
+    section {
+      padding: 40px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    /* CARDS */
+    .cards {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: forestgreen;
+      border-radius: 10px;
+      width: 250px;
+      overflow: hidden;
+      transition: 0.3s;
+  
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      padding: 10px;
+    }
+
+    .card p {
+      padding: 0 10px 10px;
+      font-size: 0.9em;
+    }
+
+    .galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 por linha */
+  gap: 20px;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 por linha */
+  gap: 20px;
+}
+img{
+  width: 100%;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.container{
+          width: 80%;  
+          margin: auto;
+          padding: 20px;
+        }
+       /* ===== MAPA ===== */
+.mapa-conquistas {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.mapa-container {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+}
+
+.mapa-container img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Pontos */
+.mc-ponto {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: gold;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Info */
+.mc-info {
+  opacity: 0;
+  transform: translateY(10px);
+
+  position: absolute;
+  bottom: 30px;
+  left: -80px;
+
+  width: 180px;
+  background-color: darkgreen;
+  color: azure;
+
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+/* Hover */
+.mc-ponto:hover .mc-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* POSIÇÕES */
+.suecia { top: 25%; left: 55%; }
+.chile { top: 70%; left: 38%; }
+.eua { top: 35%; left: 10%; }
+.mexico { top: 55%; left: 22%; }
+.japao { top: 45%; left: 88%; }
+
+/* FOOTER */
+footer{
+background: darkgreen;
+color: aliceblue;
+text-align:center;
+padding:20px;
+}
+
+  </style>
+</head>
+<body>
+
+<header></header>
+
+header>
+<nav>
+  <ul style="display: flex; justify-content: center; list-style: none; padding: 0;">
+    <li style="margin: 0 15px;"><a href="index.html">Home</a></li>
+    <li style="margin: 0 15px;"><a href="museu.html">Museu</a></li>
+    <li style="margin: 0 15px;"><a href="quiz.html">Quiz</a></li>
+    <li style="margin: 0 15px;"><a href="sede.html">Sede</a></li>
+    <li style="margin: 0 15px;"><a href="brasil.html">Brasil</a></li>
+    <li style="margin: 0 15px;"><a href="bastidores.html">Bastidores</a></li>
+  </ul>
+</nav>
+</header>
+
+<section id="idolos">
+  <h2>Ídolos da Copa</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="img/pele.jpg" class="img-click" onclick="abrirImagem(this)">
+      <h3>Pelé</h3>
+      <p>Um dos maiores jogadores da história do futebol, tricampeão mundial com o Brasil (1958, 1962 e 1970), conhecido por sua habilidade,
+         inteligência e por marcar mais de mil gols ao longo da carreira.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/taffarel.jpeg">
+      <h3>Cláudio Taffarel</h3>
+      <p>Lendário goleiro da seleção brasileira, destaque na conquista da Copa do Mundo de 1994, 
+        conhecido por suas defesas decisivas e liderança em campo.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/romario.jpg">
+      <h3>Romário</h3>
+      <p>Um dos maiores atacantes do futebol brasileiro, destaque na conquista da Copa do Mundo de 1994, famoso por sua precisão,
+         frieza diante do gol e personalidade marcante.</p>
+    </div>
+
+  <div class="card">
+    <img src="img/bebeto.jpg">
+    <h3>Bebeto</h3>
+    <p>Foi um grande atacante brasileiro, destaque na conquista da Copa do Mundo de 1994, 
+      conhecido por seus gols decisivos e pela icônica comemoração de “embalar o bebê”.</p>
+  </div>
+
+  <div class="card">
+    <img src="img/garricha.jpg">
+    <h3>Garricha</h3>
+    <p>Considerado o maior driblador da história. Foi o principal jogador do Brasil na Copa de 1962.
+      Tinha um estilo irreverente e imprevisível.
+      Suas pernas tortas eram uma característica marcante.
+      Era amado pelo povo pela sua simplicidade.</p>
+  </div>
+
+  <div class="card">
+    <img src="img/didi.jpg">
+    <h3>Didi</h3>
+    <p>Foi o cérebro da seleção de 1958.
+      Inventou o chute “folha seca” (bola cai de repente).
+      Eleito o melhor jogador da Copa de 1958.
+      Tinha grande liderança em campo.</p>
+  </div>
+  <div class="card">
+    <img src="img/niltonsantos.jpg">
+    <h3>Nilton Santos</h3>
+    <p>Apelidado de “Enciclopédia do Futebol”.
+      Revolucionou a posição de lateral (apoiava o ataque).
+      Bicampeão mundial (1958 e 1962).
+      Jogou toda a carreira no Botafogo.</p>
+  </div>
+
+  <div class="card">
+    <img src="img/zico.jpg">
+    <h3>Zico</h3>
+    <p>Maior ídolo da história do Flamengo.
+      Conhecido como “Galinho de Quintino”.
+      Especialista em faltas e gols de média distância.
+      Não ganhou Copa, mas marcou época pela qualidade.</p>
+  </div>
+
+  <div class="card">
+    <img src="img/socrates.jpg">
+    <h3>Sócrates</h3>
+    <p>Capitão da seleção de 1982.
+      Jogador muito inteligente e técnico.
+      Ficou famoso pelos passes de calcanhar.
+      Também era médico e engajado politicamente.</p>
+  </div>
+  <div class="card">
+    <img src="img/falcao.jpg">
+    <h3>Falcão</h3>
+    <p>Chamado de “Rei de Roma” (ídolo na Itália).
+      Meio-campista completo: marcava e atacava.
+      Destaque na Copa de 1982.
+      Muito elegante jogando.</p>
+  </div>
+
+  <div class="card">
+    <img src="img/rivelino.jpg">
+    <h3>Rivelino</h3>
+    <p>Um dos grandes craques da geração de 1970.
+      Ficou famoso pelo seu chute extremamente forte e preciso.
+      Popularizou o drible “elástico”, muito usado até hoje.
+      Era facilmente reconhecido pelo bigode marcante.
+      Foi campeão mundial na histórica Copa de 1970.</p>
+  </div>
+  <div class="card">
+    <img src="img/cafu.jpg">
+    <h3>Cafu</h3>
+    <p>Capitão da Seleção na conquista do pentacampeonato em 2002.
+      Único jogador a disputar três finais de Copa seguidas (1994, 1998 e 2002).
+      Conhecido pela sua resistência física e velocidade impressionante.
+      Jogava como lateral-direito e apoiava muito o ataque.
+      Um dos maiores laterais da história do futebol mundial</p>
+  </div>
+</div>
+
+</section> 
+
+<section id="momentos">
+  <h2>Marcos Históricos</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="img/selecao1970.jpg">
+      <h3>Brasil 1970</h3>
+      <p>A seleção de 1970 é considerada por muitos a melhor equipe de futebol de todos os tempos. Jogando um futebol bonito, ofensivo e cheio de talento, 
+        encantou o mundo na Copa do Mundo FIFA 1970..</p>
+    </div>
+
+    <div class="card">
+      <img src="img/camisacanarinho.jpeg">
+      <h3>Camisa Canarinho</h3>
+      <p>A famosa “camisa canarinho” é o uniforme amarelo da Seleção Brasileira, símbolo de alegria, talento e paixão pelo futebol. Ela surgiu após a derrota na Copa do Mundo FIFA 1950, quando decidiram abandonar o uniforme branco e criar algo que representasse melhor o país.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/selecaofeminina.jpg">
+      <h3>Primeira seleção feminina</h3>
+      <p>A primeira seleção feminina de futebol do Brasil foi formada na década de 1980, após mais de 40 anos de proibição do futebol para mulheres no país. O futebol feminino foi regulamentado em 1983, e a seleção começou a competir em 1986,
+         na disputa do Mundialito.</p>
+    </div>
+
+    <div class="card">
+      <img src="img/2014.jpeg">
+      <h3>Alemanha 7 x 1 Brasil 2014</h3>
+      <p>O histórico jogo Brasil 1-7 Alemanha, conhecido como "Mineirazo", ocorreu em 8 de julho de 2014, na semifinal da Copa do Mundo no Mineirão.
+         A Alemanha marcou quatro gols em seis minutos no primeiro tempo, totalizando 5-0 na meia hora inicial, com gols de Müller, Klose, Kroos (2) e Khedira. 
+         Schürrle fez mais dois e Oscar descontou no final. </p>
+    </div>
+
+    <div class="card">
+      <img src="img/copa1930.jpg">
+      <h3>Copa de 1930 (Uruguai)</h3>
+      <p>A primeira edição da Copa do Mundo da história aconteceu no Uruguai. O local foi escolhido pela Fifa pois os uruguaios à época comemoravam o centenário de sua primeira constituição, 
+        além da conquista da medalha de ouro nos Jogos Olímpicos de 1924 e 1928. Naquele ano, o Brasil disputou apenas duas partidas (contra Iugoslávia e Bolívia) e foi eliminado como segundo colocado do Grupo 2. O campeão da edição foi o próprio Uruguai. </p>
+    </div>
+    <div class="card">
+      <img src="img/didi1958.jpg">
+      <h3>Caminhada de Didi (1958)</h3>
+      <p>A "Caminhada de Didi" na final da Copa do Mundo de 1958, contra a Suécia, foi um momento icônico de liderança psicológica. 
+        Após o Brasil sofrer um gol aos 4 minutos, Didi, com calma, pegou a bola na rede, caminhou devagar até o meio-campo com ela debaixo do braço, tranquilizando o time. </p>
+    </div>
+  </div>
+   
+<!-- MAPA -->
+<section class="mapa-conquistas">
+  <h2>Mapa de Conquistas</h2>
+
+  <div class="mapa-container">
+    <img src="img/mapamundi.jpg">
+
+    <div class="mc-ponto suecia">
+      <div class="mc-info">
+        <img src="img/copahexa1958.webp">
+        <strong>1958 - Suécia</strong><br>
+        Primeira conquista do Brasil.
+      </div>
+    </div>
+
+    <div class="mc-ponto chile">
+      <div class="mc-info">
+        <img src="img/chilebrasil1962.jpeg">
+        <strong>1962 - Chile</strong><br>
+        Bicampeonato mundial.
+      </div>
+    </div>
+
+    <div class="mc-ponto mexico">
+      <div class="mc-info">
+        <img src="img/mexicobrasil1970.jpg">
+        <strong>1970 - México</strong><br>
+        Seleção histórica.
+      </div>
+    </div>
+
+    <div class="mc-ponto eua">
+      <div class="mc-info">
+        <img src="img/euabrasil1994.jpg">
+        <strong>1994 - EUA</strong><br>
+        Volta ao topo.
+      </div>
+    </div>
+
+    <div class="mc-ponto japao">
+      <div class="mc-info">
+        <img src="img/japaobrasil2002.jpg">
+        <strong>2002 - Japão/Coreia</strong><br>
+        Pentacampeonato.
+      </div>
+    </div>
+</section>
+</section>
+
+<footer>
+  <p>Web Na Copa - Feito por DevsConecta</p>
+  </footer>
+
+</body>
+</html>

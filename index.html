@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Web Na Copa</title>
+
+<link rel="icon" type="image/png" href="img/taça.png">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+:root{
+--verde:#009c3b;
+--amarelo:#ffdf00;
+--azul:#002776;
+}
+
+body{
+background:#f5f7fb;
+color:#333;
+}
+
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:var(--verde);
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#444;
+transition:0.3s;
+}
+
+nav a:hover{
+color:var(--verde);
+}
+
+/* HERO */
+.hero{
+width:100%;
+overflow:hidden;
+}
+
+.hero-img{
+width:100%;
+display:block;
+}
+
+/* JOGOS */
+.brasil-jogos{
+padding:120px 8%;
+background:white;
+text-align:center;
+}
+
+.brasil-jogos h2{
+font-size:34px;
+margin-bottom:50px;
+color:var(--azul);
+}
+
+.jogos-box{
+max-width:600px;
+margin:auto;
+}
+
+.jogo{
+display:flex;
+gap:20px;
+background:#f9fafc;
+padding:25px;
+border-radius:10px;
+margin-bottom:20px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+.jogo:hover{
+transform:scale(1.03);
+}
+
+.data{
+background:var(--verde);
+color:white;
+padding:10px;
+border-radius:6px;
+min-width:80px;
+text-align:center;
+}
+
+.jogo.ativo{
+background:#eefaf2;
+border-left:5px solid var(--amarelo);
+}
+
+.conteudo-jogo{
+display:flex;
+justify-content:space-between;
+align-items:center;
+width:100%;
+}
+
+.hora{
+font-weight:bold;
+color:var(--azul);
+min-width:50px;
+text-align:right;
+}
+
+.info-jogo{
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+background:#eefaf2;
+padding:0 20px;
+}
+
+.info-jogo.ativo{
+max-height:300px;
+padding:20px;
+}
+
+/* CARDS ESTÁDIOS */
+.cards-estadios{
+padding:120px 8%;
+margin-bottom:120px;
+background:#f5f7fb;
+text-align:center;
+}
+
+.titulo-cards{
+text-align:center;
+font-size:34px;
+color:var(--azul);
+margin-top:20px;
+margin-bottom:50px;
+}
+
+.cards-container{
+display:flex;
+gap:25px;
+justify-content:center;
+flex-wrap:nowrap;
+margin-bottom:80px;
+}
+
+/* CARD */
+.card{
+width:220px;
+background:white;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+position:relative;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+/* IMAGEM 4:5 */
+.card img{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+display:block;
+}
+
+/* ABA DE INFO */
+.card-info{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+background:linear-gradient(180deg, rgba(0,156,59,0.95), rgba(0,39,118,0.95));
+color:white;
+padding:15px;
+transform:translateY(100%);
+transition:0.35s;
+font-size:14px;
+text-align:left;
+}
+
+.card:hover .card-info{
+transform:translateY(0);
+}
+
+.card-info p{
+margin-bottom:8px;
+}
+
+.card-info strong{
+color:var(--amarelo);
+}
+
+/* HISTÓRIA */
+.historia{
+padding:80px 8% 80px 8%;
+text-align:center;
+background:linear-gradient(135deg,#002776,#009c3b);
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:25px;
+}
+
+.historia h2{
+font-size:32px;
+max-width:800px;
+}
+
+.btn-historia{
+padding:18px 40px;
+background:var(--amarelo);
+color:var(--azul);
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-size:20px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn-historia:hover{
+transform:scale(1.1);
+}
+
+/* TIMELINE */
+.timeline{
+padding:100px 8%;
+background:#f9fafc;
+}
+
+.timeline-title{
+text-align:center;
+font-size:34px;
+color:var(--azul);
+}
+
+.timeline-line{
+position:relative;
+max-width:900px;
+margin:60px auto;
+height:80px;
+}
+
+.timeline-line::before{
+content:"";
+position:absolute;
+width:100%;
+height:4px;
+background:#ccc;
+top:50%;
+transform:translateY(-50%);
+}
+
+.timeline-progress{
+position:absolute;
+height:4px;
+background:var(--verde);
+top:50%;
+left:0;
+width:0%;
+transform:translateY(-50%);
+transition:0.4s;
+}
+
+.dot{
+position:absolute;
+top:50%;
+transform:translate(-50%,-50%);
+width:22px;
+height:22px;
+background:#bbb;
+border-radius:50%;
+cursor:pointer;
+border:3px solid white;
+transition:0.25s;
+}
+
+.dot:hover{
+background:var(--amarelo);
+transform:translate(-50%,-50%) scale(1.25);
+}
+
+.dot.active{
+background:var(--verde);
+transform:translate(-50%,-50%) scale(1.3);
+}
+
+.dot span{
+position:absolute;
+top:30px;
+left:50%;
+transform:translateX(-50%);
+font-size:14px;
+}
+
+.d1{left:0%;}
+.d2{left:20%;}
+.d3{left:30%;}
+.d4{left:45%;}
+.d5{left:70%;}
+.d6{left:80%;}
+.d7{left:92%;}
+.d8{left:100%;}
+
+.timeline-content{
+max-width:600px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+}
+
+/* AVALIAÇÃO FINAL */
+
+.avaliacao{
+padding:100px 8%;
+text-align:center;
+background: white;
+color: white;
+}
+
+.avaliacao h2{
+font-size:30px;
+color:var(--azul);
+margin-bottom:10px;
+}
+
+.avaliacao p{
+color:#555;
+margin-bottom:25px;
+}
+
+.qrcode-avaliacao{
+width:200px;
+background:white;
+padding:10px;
+border-radius:12px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.qrcode-avaliacao:hover{
+transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+background:#111;
+color:#aaa;
+text-align:center;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div class="logo">Web Na Copa</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="museu.html">Museu</a>
+<a href="quiz.html">Quiz</a>
+<a href="sede.html">Sede</a>
+<a href="brasil.html">Brasil</a>
+<a href="bastidores.html">Bastidores</a>
+</nav>
+</header>
+
+<section class="hero">
+<img src="img/banner.jpg" class="hero-img">
+</section>
+
+<section class="brasil-jogos">
+<h2>Jogos do Brasil</h2>
+
+<div class="jogos-box">
+
+<div class="jogo" onclick="toggleJogo(0)">
+<span class="data">13 Jun</span>
+
+<div class="conteudo-jogo">
+<p><strong>Brasil x Marrocos</strong></p>
+<span class="hora">19h</span>
+</div>
+
+</div>
+<div class="info-jogo" id="info0"><p>Estádio MetLife, East Rutherford.</p>
+<p>Informações adicionais estarão disponíveis antes da partida.</p>
+</div>
+
+<div class="jogo" onclick="toggleJogo(1)">
+<span class="data">19 Jun</span>
+
+<div class="conteudo-jogo">
+<p><strong>Brasil x Haiti</strong></p>
+<span class="hora">22h</span>
+</div>
+
+</div>
+<div class="info-jogo" id="info1"><p>Estádio Lincoln Financial Field, Filadélfia.</p>
+<p>Informações adicionais estarão disponíveis antes da partida.</p>
+</div>
+
+<div class="jogo" onclick="toggleJogo(2)">
+<span class="data">24 Jun</span>
+
+<div class="conteudo-jogo">
+<p><strong>Brasil x Escócia</strong></p>
+<span class="hora">19h</span>
+</div>
+
+</div>
+<div class="info-jogo" id="info2"><p>Estádio Hard Rock, Miami.</p>
+<p>Informações adicionais estarão disponíveis antes da partida.</p>
+</div>
+
+</div>
+</section>
+
+<section class="cards-amistosos">
+
+    <h2 class="titulo-cards">Amistosos pré-copa</h2>
+    
+    <div class="cards-container">
+    
+    <div class="card">
+    <img src="img/brasilf.jpg">
+    <div class="card-info">
+    <p><strong>Data:</strong> 26 de março de 2026</p>
+    <p><strong>Local:</strong> Gillette Stadium, Boston, EUA</p>
+    <p><strong>Resultado:</strong> França 2 x 1 Brasil</p>
+    </div>
+    </div>
+    
+    <div class="card">
+    <img src="img/brasilc.jpg">
+    <div class="card-info">
+    <p><strong>Data:</strong> 31 de março de 2026</p>
+    <p><strong>Local:</strong> Camping World Stadium, Orlando, EUA</p>
+    <p><strong>Resultado:</strong> Brasil 3 x 1 Croácia</p>
+    </div>
+    </div>
+    
+    <div class="card">
+    <img src="img/brasile.jpg">
+    <div class="card-info">
+    <p><strong>Data:</strong> 31 de maio de 2026</p>
+    <p><strong>Local:</strong> Maracanã, Rio de Janeiro</p>
+    <p>Este amistoso servirá como despedida da torcida brasileira antes da viagem para os Estados Unidos.</p>
+    </div>
+    </div>
+    
+    <div class="card">
+    <img src="img/brasilp.jpg">
+    <div class="card-info">
+    <p><strong>Data:</strong> 6 de junho de 2026</p>
+    <p><strong>Local:</strong> Huntington Bank Field, Cleveland, EUA</p>
+    <p>Último amistoso antes da estreia na Copa, com o grupo definitivo de 26 jogadores convocados.</p>
+    </div>
+    </div>
+    
+    </div>
+    </section>
+
+<section class="historia">
+<h2>Você torce, vibra e comemora… mas conhece o que realmente construiu a Copa do Mundo?</h2>
+<a href="históriacopa.html" class="btn-historia">VER HISTÓRIA COMPLETA</a>
+</section>
+
+<section class="timeline">
+
+<h2 class="timeline-title">Linha do Tempo da Copa</h2>
+
+<div class="timeline-line">
+<div class="timeline-progress" id="progress"></div>
+
+<div class="dot d1 active" onclick="mostrar(0)"><span>1930</span></div>
+<div class="dot d2" onclick="mostrar(1)"><span>1950</span></div>
+<div class="dot d3" onclick="mostrar(2)"><span>1958</span></div>
+<div class="dot d4" onclick="mostrar(3)"><span>1970</span></div>
+<div class="dot d5" onclick="mostrar(4)"><span>1994</span></div>
+<div class="dot d6" onclick="mostrar(5)"><span>2002</span></div>
+<div class="dot d7" onclick="mostrar(6)"><span>2014</span></div>
+<div class="dot d8" onclick="mostrar(7)"><span>Hoje</span></div>
+
+</div>
+
+<div class="timeline-content" id="conteudo"></div>
+
+</section>
+
+<section class="avaliacao">
+
+    <h2>Avalie nosso site</h2>
+    <p>Escaneie o QR Code e deixe sua opinião</p>
+    
+    <img src="img/Avaliações-1024.jpeg" class="qrcode-avaliacao">
+    
+    </section>
+
+<footer>
+<p>Web Na Copa - Feito por DevsConecta</p>
+</footer>
+
+<script>
+
+let textos = [ 
+
+`<h3>1930 - O começo de tudo</h3>
+<p>A primeira Copa do Mundo foi realizada no Uruguai, marcando o início de uma das maiores competições esportivas do planeta. O torneio ainda era pequeno, com poucos países participantes, mas já carregava um enorme simbolismo.</p>
+
+<p>O futebol começava ali sua jornada rumo à paixão global que conhecemos hoje.</p>`,
+
+`<h3>1950 - O Maracanazo</h3>
+<p>O Brasil sediou a Copa com um sonho gigante, mas acabou sofrendo uma das derrotas mais marcantes da história contra o Uruguai, no Maracanã lotado.</p>
+
+<p>Esse momento ficou eternizado como um dos episódios mais emocionantes e dolorosos do futebol mundial.</p>`,
+
+`<h3>1958 - O surgimento de Pelé</h3>
+<p>Na Suécia, o mundo viu nascer uma lenda: Pelé. Com apenas 17 anos, ele encantou o planeta e ajudou o Brasil a conquistar sua primeira Copa do Mundo.</p>`,
+
+`<h3>1970 - O auge do futebol arte</h3>
+<p>Com um time histórico, o Brasil conquistou o tricampeonato no México, jogando um futebol considerado por muitos o mais bonito de todos os tempos.</p>`,
+
+`<h3>1994 - O Tetra</h3>
+<p>Após 24 anos de espera, o Brasil voltou ao topo do mundo nos Estados Unidos, vencendo a Itália nos pênaltis.</p>`,
+
+`<h3>2002 - O Penta</h3>
+<p>Com Ronaldo brilhando, o Brasil conquistou seu quinto título mundial, consolidando-se como a maior seleção da história.</p>`,
+
+`<h3>2014 - O Mineiraço</h3>
+<p>Em casa, o Brasil viveu uma das derrotas mais chocantes do futebol ao perder por 7 a 1 para a Alemanha.</p>`,
+
+`<h3>Hoje</h3>
+<p>A Copa do Mundo continua sendo o maior espetáculo do futebol, reunindo nações, histórias e emoções a cada quatro anos.</p>`
+
+];
+
+function mostrar(index){
+document.getElementById("conteudo").innerHTML = textos[index];
+
+let dots = document.querySelectorAll(".dot");
+dots.forEach(d=>d.classList.remove("active"));
+dots[index].classList.add("active");
+
+let pos=["0%","20%","30%","45%","70%","80%","92%","100%"];
+document.getElementById("progress").style.width = pos[index];
+}
+
+function toggleJogo(index){
+
+let jogos=document.querySelectorAll(".jogo");
+let infos=document.querySelectorAll(".info-jogo");
+
+let ativo=jogos[index].classList.contains("ativo");
+
+jogos.forEach(j=>j.classList.remove("ativo"));
+infos.forEach(i=>i.classList.remove("ativo"));
+
+if(!ativo){
+jogos[index].classList.add("ativo");
+infos[index].classList.add("ativo");
+}
+
+}
+
+/* 🔥 AQUI ESTÁ A MÁGICA */
+window.onload = function(){
+mostrar(0);
+}
+
+</script>
+
+</body>
+</html>
